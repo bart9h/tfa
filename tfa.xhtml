@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC
+    "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN"
+    "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg-flat.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:svg="http://www.w3.org/2000/svg">
+
+<head>
+<!-- {{{ -->
+
+	<title xml:lang="pt_BR">Teorema Fundamental da Álgebra</title>
+
+	<script type="text/javascript"> <!-- {{{ -->
+	//<![CDATA[
+
+		function val (x)
+		{
+			var el = document.getElementById (x);
+			return parseFloat (el.value);
+		}
+
+		function calcula()
+		{
+			var x = val("x");
+			var x2 = val("x2");
+			var x1 = val("x1");
+			var x0 = val("x0");
+			var y = x2*x*x + x1*x + x0;
+
+			var el = document.getElementById ("resultado");
+			var eq = ""+x2+"x^2 + "+x1+"x + "+x0+" = "+y;
+			el.firstChild.nodeValue = eq;
+		}
+
+	// ]]>
+	</script> <!-- }}} -->
+
+	<style type="text/css"> <!-- {{{ -->
+	</style> <!-- }}} -->
+
+<!-- }}} -->
+</head>
+
+<body>
+<!-- {{{ -->
+
+<h2>polinômio</h2> <!-- {{{ -->
+
+<form action="" method="post" onsubmit='return false'>
+	Entre com o polinômio:
+	<input type="text" id="x2" size="5" value="1" />
+	x^2 +
+	<input type="text" id="x1" size="5" value="-2" />
+	x +
+	<input type="text" id="x0" size="5" value="1" />
+	<input type="submit" value="ok" />
+</form>
+
+<!-- }}} -->
+
+<h2>x</h2> <!-- {{{ -->
+
+<form action="" method="post" onsubmit='calcula(); return false'>
+	Entre com o valor de "x":
+	<input type="text" id="x" size="5" value="0" />
+	<input type="submit" value="ok" />
+</form>
+
+<!-- }}} -->
+
+<h2>resultado</h2> <!-- {{{ -->
+
+<p>
+	<!-- {{{ SVG -->
+	<svg:svg version="1.1">
+		<svg:text
+			id="resultado"
+			x="0" y="24"
+			font-family="Arial" font-size="24"
+		>
+			?
+		</svg:text>
+	</svg:svg> 
+	<!-- }}} -->
+</p>
+
+<!-- }}} -->
+
+<!-- }}} -->
+</body>
+
+</html>
+
+<!-- vim600:fdm=marker:ft=xhtml:
+-->
