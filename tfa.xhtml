@@ -9,147 +9,7 @@
 
 <title xml:lang='pt_BR'>Teorema Fundamental da Álgebra</title>
 
-<script type='text/javascript'>
-<!-- {// -->
-//<![CDATA[
-
-	/*
-	function calcula()
-	{//
-		function val (x)
-		{//
-			var el = document.getElementById (x);
-			return parseFloat (el.value);
-		}//
-
-		function set (id, val)
-		{//
-			var el = document.getElementById (id);
-			el.firstChild.nodeValue = val;
-			var bbox = el.getBBox();
-
-			el.setAttribute ('x', i);
-			if (id != '2')
-				el.setAttribute ('y', j);
-			else
-				el.setAttribute ('y', j - bbox.height);
-
-			i += el.getBBox().width + padding;
-		}//
-
-		var x = val('input_x');
-		var a = val('input_x2');
-		var b = val('input_x1');
-		var c = val('input_x0');
-		var y = a*x*x + b*x + c;
-
-		var i = 40;
-		var j = 110;
-		var padding = 6;
-
-		set ('a', a);
-		set ('.2', '.');
-		set ('x2', x);
-		set ('2', '2');
-		i += padding;
-		set ('b', sig(b));
-		set ('.1', '.');
-		set ('x1', x);
-		i += padding;
-		set ('c', sig(c));
-		i += padding;
-		set ('=', '=');
-		i += padding;
-		set ('y', y);
-
-
-		var rct = document.createElementNS ('http://www.w3.org/2000/svg', 'rect');
-		rct.setAttribute ('x', 10);
-		rct.setAttribute ('y', 10);
-		rct.setAttribute ('width', 20);
-		rct.setAttribute ('height', 10);
-
-		var svg = document.getElementById ('polinomio');
-		svg.appendChild (rct);
-	}//
-	*/
-
-	function render_pol (pol)
-	{//
-		var x_pos = 40;
-		var y_pos = 80;
-		var padding = 6; //TODO: usar largura do whitespace
-
-		function add_text (str, sty)
-		{//
-			var svgns = 'http://www.w3.org/2000/svg';
-			var el = document.createElementNS (svgns, 'text');
-
-			el.appendChild (document.createTextNode (str));
-
-			var svg = document.getElementById ('polinomio');
-			svg.appendChild (el);
-
-			el.firstChild.nodeValue = str;
-			var bbox = el.getBBox();
-
-			el.setAttribute ('x', x_pos);
-			if (sty != 'exp') {
-				el.setAttribute ('y', y_pos);
-			}
-			else {
-				el.setAttribute ('y', y_pos - bbox.height/2);
-				el.setAttribute ('class', sty);
-			}
-
-			x_pos += bbox.width + padding;
-		}//
-
-		function sig (x)
-		{//
-			return x < 0 ? x : ('+' + x);
-		}//
-
-		add_text ('p(x) = ');
-		x_pos += padding;
-		var i;
-		for (i = pol.length-1; i >= 0; --i) {
-			if (pol[i] == 0)
-				continue;
-
-			add_text ((i == pol.length-1) ? pol[i] : sig(pol[i]));
-			if (i != 0) {
-				add_text ('.', 'exp');
-				add_text ('x');
-				if (i != 1)
-					add_text (i, 'exp');
-			}
-		}
-	}//
-
-	function calcula_pol (pol, x)
-	{//
-		var y = 0;
-
-		var i;
-		for (i = 0; i < pol.length; ++i) {
-			y += pol[i] * Math.pow(x,i);
-		}
-
-		return y;
-	}//
-
-	function exemplo_1()
-	{// 5x^3 -3x^2 -x +7
-
-		var pol = new Array (7, -1, -3, 5);
-
-		var y = calcula_pol (pol, 2);
-		render_pol (pol);
-	}//
-
-// ]]>
-<!-- }// -->
+<script src='tfa.js'>
 </script>
 
 <style type='text/css'>
@@ -186,39 +46,12 @@
 
 <body onload='exemplo_1();'>
 
-	<h2>polinômio</h2> <!-- {// -->
-
-<form action='' method='post' onsubmit='return false'>
-	Entre com o polinômio:
-	<input type='text' id='input_x2' size='5' value='1' />
-	x^2 +
-	<input type='text' id='input_x1' size='5' value='-2' />
-	x +
-	<input type='text' id='input_x0' size='5' value='1' />
-	<input type='submit' value='ok' />
-</form>
-
-<!-- }// -->
-
-<h2>x</h2> <!-- {// -->
-
-<form action='' method='post' onsubmit='calcula(); return false'>
-	Entre com o valor de 'x':
-	<input type='text' id='input_x' size='5' value='0' />
-	<input type='submit' value='ok' />
-</form>
-
-<!-- }// -->
-
-<h2>resultado</h2>
-
 <p>
-<!-- {// SVG -->
 	<svg id='polinomio'
 		version='1.1' xmlns='http://www.w3.org/2000/svg'
+		onclick='avanca()'
 	>
 	</svg> 
-<!-- }// -->
 </p>
 
 </body>
