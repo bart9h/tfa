@@ -6,53 +6,107 @@
       xmlns:svg="http://www.w3.org/2000/svg">
 
 <head>
-<!-- {{{ -->
 
-	<title xml:lang="pt_BR">Teorema Fundamental da Álgebra</title>
+<title xml:lang="pt_BR">Teorema Fundamental da Álgebra</title>
 
 	<script type="text/javascript"> <!-- {{{ -->
 	//<![CDATA[
 
-		function val (x)
-		{
-			var el = document.getElementById (x);
-			return parseFloat (el.value);
-		}
-
 		function calcula()
 		{
-			var x = val("x");
-			var x2 = val("x2");
-			var x1 = val("x1");
-			var x0 = val("x0");
-			var y = x2*x*x + x1*x + x0;
+			function val (x)
+			{//{{{
+				var el = document.getElementById (x);
+				return parseFloat (el.value);
+			}//}}}
 
-			var el = document.getElementById ("resultado");
-			var eq = ""+x2+"x^2 + "+x1+"x + "+x0+" = "+y;
-			el.firstChild.nodeValue = eq;
+			function set (id, val)
+			{//{{{
+				var el = document.getElementById (id);
+				el.firstChild.nodeValue = val;
+				var bbox = el.getBBox();
+
+				el.setAttribute ("x", i);
+				if (id != "2")
+					el.setAttribute ("y", j);
+				else {
+					el.setAttribute ("y", j - bbox.height);
+				}
+
+				i += el.getBBox().width + padding;
+			}//}}}
+
+			function sig (x)
+			{//{{{
+				return x < 0 ? x : ("+" + x);
+			}//}}}
+
+			var x = val("input_x");
+			var a = val("input_x2");
+			var b = val("input_x1");
+			var c = val("input_x0");
+			var y = a*x*x + b*x + c;
+
+			var i = 40;
+			var j = 80;
+			var padding = 6;
+
+			set ("a",  a);
+			set (".2", ".");
+			set ("x2", x);
+			set ("2", "2");
+			i += padding;
+			set ("b",  sig(b));
+			set (".1", ".");
+			set ("x1", x);
+			i += padding;
+			set ("c",  sig(c));
+			i += padding;
+			set ("=", "=");
+			i += padding;
+			set ("y", y);
+
 		}
 
 	// ]]>
 	</script> <!-- }}} -->
 
 	<style type="text/css"> <!-- {{{ -->
+	
+		body {
+			background-color: #dcb;
+		}
+
+		svg {
+			background-color: #bcd;
+			width: 80%;
+		}
+
+		text {
+			font-family: Arial;
+			font-size: 16pt;
+		}
+
+		text.small {
+			font-size: 12pt;
+		}
+
 	</style> <!-- }}} -->
 
-<!-- }}} -->
 </head>
 
+
 <body>
-<!-- {{{ -->
 
 <h2>polinômio</h2> <!-- {{{ -->
 
 <form action="" method="post" onsubmit='return false'>
 	Entre com o polinômio:
-	<input type="text" id="x2" size="5" value="1" />
+	<input type="text" id="input_x2" size="5" value="1" />
 	x^2 +
-	<input type="text" id="x1" size="5" value="-2" />
+	<input type="text" id="input_x1" size="5" value="-2" />
 	x +
-	<input type="text" id="x0" size="5" value="1" />
+	<input type="text" id="input_x0" size="5" value="1" />
 	<input type="submit" value="ok" />
 </form>
 
@@ -62,31 +116,32 @@
 
 <form action="" method="post" onsubmit='calcula(); return false'>
 	Entre com o valor de "x":
-	<input type="text" id="x" size="5" value="0" />
+	<input type="text" id="input_x" size="5" value="0" />
 	<input type="submit" value="ok" />
 </form>
 
 <!-- }}} -->
 
-<h2>resultado</h2> <!-- {{{ -->
+<h2>resultado</h2>
 
 <p>
 	<!-- {{{ SVG -->
-	<svg:svg version="1.1">
-		<svg:text
-			id="resultado"
-			x="0" y="24"
-			font-family="Arial" font-size="24"
-		>
-			?
-		</svg:text>
-	</svg:svg> 
+	<svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+		<text x="-99" id="a">a</text>
+		<text x="-99" id=".2">.2</text>
+		<text x="-99" id="x2">x2</text>
+		<text x="-99" id="2" class="small">2</text>
+		<text x="-99" id="2">2</text>
+		<text x="-99" id=".1">.1</text>
+		<text x="-99" id="b">b</text>
+		<text x="-99" id="x1">x1</text>
+		<text x="-99" id="c">c</text>
+		<text x="-99" id="=">=</text>
+		<text x="-99" id="y">y</text>
+	</svg> 
 	<!-- }}} -->
 </p>
 
-<!-- }}} -->
-
-<!-- }}} -->
 </body>
 
 </html>
