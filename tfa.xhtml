@@ -3,42 +3,51 @@
     '-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN'
     'http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg-flat.dtd'>
 <html xmlns='http://www.w3.org/1999/xhtml'
-      xmlns:svg='http://www.w3.org/2000/svg'>
+	xmlns:svg='http://www.w3.org/2000/svg'>
 
 <head>
 
 <title xml:lang='pt_BR'>Teorema Fundamental da Álgebra</title>
 
-<script src='tfa.js'>
+<script type='text/javascript' src='tfa.js'>
 </script>
 
 <style type='text/css'>
-<!-- {// -->
+<!-- ((( -->
 	
 	body {
-		background-color: #dcb;
+		background-color: black;
 	}
 
 	svg {
 		background-color: #bcd;
-		width: 80%;
 	}
 
 	text {
 		font-family: Arial;
-		font-size: 16pt;
-		fill-opacity: 0.8;
+		font-size: 14pt;
 	}
 
 	text.exp {
-		font-size: 12pt;
+		font-size: 10pt;
 	}
 
 	text:hover {
 		fill-opacity: 1;
+		fill: red;
 	}
 
-<!-- }// -->
+	tr {
+		background-color:#dcb;
+		border: 20px;
+	}
+
+	td {
+		text-align: center;
+		padding: 10px;
+	}
+
+<!-- ))) -->
 </style>
 
 </head>
@@ -46,17 +55,30 @@
 
 <body onload='exemplo_1();'>
 
-<p>
-	<svg id='polinomio'
-		version='1.1' xmlns='http://www.w3.org/2000/svg'
-		onclick='avanca()'
-	>
-	</svg> 
-</p>
+	<table width='90%' align='center'>
+		<tr class='header'>
+			<td>
+				<h1>TFA</h1>
+			</td>
+		</tr>
+		<tr height='*'>
+			<td>
+				<svg:svg version='1.1'
+					id='polinomio'
+					viewBox='0 0 500 500'
+					onclick='avanca()'
+				/>
+			</td>
+		</tr>
+		<tr class='footer'>
+			<td>
+			</td>
+		</tr>
+	</table>
 
 </body>
 
 </html>
 
-<!-- vim600:ft=xhtml:fdm=marker:fmr={//,}//:
+<!-- vim600:ft=xhtml:fdm=marker:fmr=(((,))):
 -->
