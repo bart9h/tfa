@@ -19,6 +19,16 @@
 		background-color: black;
 	}
 
+	div {
+		padding: 1px;
+		margin:  8px;
+		text-align: center;
+	}
+
+	div.header,div.footer {
+		background-color: #dcb;
+	}
+
 	svg {
 		background-color: #bcd;
 	}
@@ -37,16 +47,6 @@
 		fill: red;
 	}
 
-	tr {
-		background-color:#dcb;
-		border: 20px;
-	}
-
-	td {
-		text-align: center;
-		padding: 10px;
-	}
-
 <!-- ))) -->
 </style>
 
@@ -55,29 +55,24 @@
 
 <body onload='init(500);'>
 
-	<table width='90%' align='center'>
-		<tr class='header'>
-			<td>
-				<h1>TFA</h1>
-			</td>
-		</tr>
-		<tr height='*'>
-			<td>
-				<svg:svg version='1.1'
-					id='polinomio'
-					viewBox='0 0 500 500'
-					onclick='avanca()'
-				/>
-			</td>
-		</tr>
-		<tr class='footer'>
-			<td>
-				<p align='center' style='font-size:small'>
-					<a href='http://pt.wikipedia.org/wiki/Teorema_fundamental_da_%C3%A1lgebra#Demonstra.C3.A7.C3.B5es_topol.C3.B3gicas'>Wikipédia</a>
-				</p>
-			</td>
-		</tr>
-	</table>
+	<div class='header'>
+		<h1>TFA</h1>
+	</div>
+
+	<div style=''>
+		<svg:svg version='1.1'
+			id='polinomio'
+			height='100%'
+			viewBox='0 0 500 500'
+			onclick='avanca()'
+		/>
+	</div>
+
+	<div class='footer'>
+		<p align='center' style='font-size:small'>
+			<a href='http://pt.wikipedia.org/wiki/Teorema_fundamental_da_%C3%A1lgebra#Demonstra.C3.A7.C3.B5es_topol.C3.B3gicas'>Wikipédia</a>
+		</p>
+	</div>
 
 </body>
 
