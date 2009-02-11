@@ -1,24 +1,32 @@
 
 var g;
 
-function init (size)
+function init (width, height)
 {//
 	g = new Object;
-	g.state = 0;
+	g.state = -1;
+	g.states = [ 'exemplo', 'plano' ];
 	g.t = 0;
-	g.size = size;
+	g.width = width;
+	g.height = height;
 
 	g.svgns = 'http://www.w3.org/2000/svg';
-	g.svg = document.getElementById ('polinomio');
+	g.svg = document.getElementById ('tfa_svg');
 
+	// cria um texto '-' temporario e usa sua largura como tamanho do padding
 	var el = document.createElementNS (g.svgns, 'text');
 	el.appendChild (document.createTextNode ('-'));
 	g.svg.appendChild (el);
 	var bbox = el.getBBox();
 	g.padding = bbox.width;
 	g.svg.removeChild (el);
+}//
 
-	exemplo_1();
+function clear()
+{//
+	while (g.svg.firstChild) {
+		g.svg.removeChild (g.svg.firstChild);
+	}
 }//
 
 function render_pol (pol)
@@ -77,8 +85,8 @@ function render_pol (pol)
 
 	// align to center
 	var bbox = group.getBBox();
-	var x = (g.size - bbox.width)/2;
-	var y = (g.size - bbox.height)/2;
+	var x = (g.width - bbox.width)/2;
+	var y = (g.height - bbox.height)/2;
 	group.setAttribute ('transform', 'translate('+x+','+y+')');
 }//
 
@@ -105,12 +113,42 @@ function exemplo_1()
 
 function tick()
 {//
-	t += .05;
+	g.t += .05;
+}//
+
+function rect (id, x, y, w, h)
+{//
+	var el = document.createElementNS (g.svgns, 'rect');
+	//el.setAttributeNS (null, 'id',     id);
+	el.setAttributeNS (null, 'x',      x);
+	el.setAttributeNS (null, 'y',      y);
+	el.setAttributeNS (null, 'width',  w);
+	el.setAttributeNS (null, 'height', h);
+	g.svg.appendChild (el);
+	return el;
+}//
+
+function plano()
+{//
+	rect ('a', 10, 10, 40, 20);
+	rect ('b', 110, 10, 40, 20);
 }//
 
 function avanca()
 {//
-	window.setInterval (tick, 20);
+	//window.setInterval (tick, 200);
+	++g.state;
+	if (g.state >= g.states.length)
+		g.state = 0;
+
+	clear();
+
+	if (g.states[g.state] == 'exemplo') {
+		exemplo_1();
+	}
+	else if (g.states[g.state] == 'plano') {
+		plano();
+	}
 }//
 
 // vim600:fdm=marker:fmr={//,}//:
