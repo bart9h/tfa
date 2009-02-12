@@ -29,6 +29,26 @@
 		background-color: #dcb;
 	}
 
+	div.header,div.footer,div.content {
+		position: absolute;
+		width: 100%;
+	}
+
+	div.header {
+		top: 0px;
+		height: 70px;
+	}
+
+	div.footer {
+		bottom: 0px;
+		height: 50px;
+	}
+
+	div.content {
+		top: 80px;
+		bottom: 60px;
+	}
+
 	svg {
 		background-color: #bcd;
 	}
@@ -59,7 +79,7 @@
 		<h1>TFA</h1>
 	</div>
 
-	<div style=''>
+	<div class='content'>
 		<svg:svg version='1.1'
 			id='tfa_svg'
 			viewBox='0 0 500 300'
