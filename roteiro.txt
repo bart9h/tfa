@@ -1,0 +1,7 @@
+1. polinomios em R
+2. ponto -> ponto
+3. polinomios em C
+4. ponto -> ponto
+5. curvas desenhadas
+6. circulos co-centricos
+7. demonstracao
